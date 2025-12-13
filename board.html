@@ -5,11 +5,38 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="CyborgZero">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <h1>TaskBoard</h1>
         </header>
+        <div>
+            <input type="text" id="suche" onkeyup="myFunction()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein">
+            <table id="liste">
+                <tr class="header">
+                    <th>Titel</th>
+                    <th>Beschreibung</th>
+                    <th>Priorität</th>
+                </tr>
+                <tr>
+                    <td>Login-Bug</td>
+                    <td>Login-Button geht nicht</td>
+                    <td>Hoch</td>
+                </tr>
+                <tr>
+                    <td>Übersicht ist falsch</td>
+                    <td>CSS wird nicht geladen</td>
+                    <td>Mittel</td>
+                </tr>
+                <tr>
+                    <td>Zu langsam</td>
+                    <td>Seite lädt sehr langsam</td>
+                    <td>Niedrig</td>
+                </tr>
+            </table>
+            <script src="suche.js"></script>
+        </div>
+        
     </body>
 </html>
