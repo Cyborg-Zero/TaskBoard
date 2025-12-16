@@ -11,28 +11,39 @@
         <header>
             <h1>TaskBoard</h1>
         </header>
-        <div>
-            <input type="text" id="suche" onkeyup="myFunction()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein">
-            <table id="liste">
+        <div class="liste">
+            <div class="suche">
+                <input type="text" id="suche" oninput="myFunction()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
+                <input type="button" id="erstellen" value="Ticket erstellen">
+            </div>
+            <table id="tabelle">
                 <tr class="header">
-                    <th>Titel</th>
-                    <th>Beschreibung</th>
-                    <th>Priorität</th>
+                    <th class="tid">ID</th>
+                    <th class="titel">Titel</th>
+                    <th class="desc">Beschreibung</th>
+                    <th class="prio">Priorität</th>
+                    <th class="date">Datum</th>
                 </tr>
                 <tr>
-                    <td>Login-Bug</td>
-                    <td>Login-Button geht nicht</td>
-                    <td>Hoch</td>
+                    <td class="tid">01</td>
+                    <td class="titel">Login-Bug</td>
+                    <td class="desc">Login-Button geht nicht</td>
+                    <td class="prio">Hoch</td>
+                    <td class="date">12.03.2025</td>
                 </tr>
                 <tr>
-                    <td>Übersicht ist falsch</td>
-                    <td>CSS wird nicht geladen</td>
-                    <td>Mittel</td>
+                    <td class="tid">02</td>
+                    <td class="titel">Übersicht ist falsch</td>
+                    <td class="desc">CSS wird nicht geladen</td>
+                    <td class="prio">Mittel</td>
+                    <td class="date">25.03.2025</td>
                 </tr>
                 <tr>
-                    <td>Zu langsam</td>
-                    <td>Seite lädt sehr langsam</td>
-                    <td>Niedrig</td>
+                    <td class="tid">03</td>
+                    <td class="titel">Zu langsam</td>
+                    <td class="desc">Seite lädt sehr langsam</td>
+                    <td class="prio">Niedrig</td>
+                    <td class="date">04.04.2025</td>
                 </tr>
             </table>
             <script src="suche.js"></script>
