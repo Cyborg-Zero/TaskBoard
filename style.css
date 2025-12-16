@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #a0a0a0;
+    background-color: #e6ecff;
 }
 
 header, div.liste {
@@ -15,24 +15,25 @@ header, div.liste {
     padding-bottom: 20px;
 }
 
-#tabelle, tr, th, td{
+#tabelle {
     width: 100%;
+}
+
+#tabelle, tr, th, td{
     border-collapse: collapse;
-    border-width: 3px;
-    border-color: black;
-    border-style: solid;
+    border: 2px solid black;
     height: 30px;
-    border-radius: 20px;
+    background-color: white;
 }
 
 th {
     text-align: center;
+    background-color: aqua;
 }
 
-th.tid, td.tid {
-    width: 30px;
-    text-align: right;
-    padding-right: 3px;
+td.tid, th.tid {
+    width: 35px;
+    text-align: center;
 }
 
 th.titel, td.titel {
