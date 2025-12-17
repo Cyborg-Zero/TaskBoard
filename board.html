@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="CyborgZero">
+        <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -13,7 +14,7 @@
         </header>
         <div class="liste">
             <div class="suche">
-                <input type="text" id="suche" oninput="myFunction()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
+                <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
                 <input type="button" id="erstellen" value="Ticket erstellen">
             </div>
             <table id="tabelle">
@@ -48,6 +49,5 @@
             </table>
             <script src="suche.js"></script>
         </div>
-        
     </body>
 </html>
