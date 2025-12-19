@@ -15,7 +15,7 @@
         <div class="liste">
             <div class="suche">
                 <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
-                <input type="button" onclick="PopUp()" id="erstellen" value="Ticket erstellen">
+                <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
             </div>
             <table id="tabelle">
                 <tr class="header">
@@ -47,8 +47,25 @@
                     <td class="date">04.04.2025</td>
                 </tr>
             </table>
+            <div class="loginPopup">
+                <div class="formPopup" id="popup">
+                    <form action="/action_page.php" class="formContainer">
+                        <h2>Please Log in</h2>
+                        <label for="email">
+                            <strong>E-mail</strong>
+                        </label>
+                        <input type="text" id="email" placeholder="Your Email" name="email" required>
+                        <label for="psw">
+                            <strong>Password</strong>
+                        </label>
+                        <input type="password" id="psw" placeholder="Your Password" name="psw" required>
+                        <button type="submit" class="btn">Log in</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                </div>
+            </div>
             <script src="suche.js"></script>
-            <script src="popup.js"></script>
+            <script src="popupoc.js"></script>
         </div>
     </body>
 </html>
