@@ -47,19 +47,21 @@
                     <td class="date">04.04.2025</td>
                 </tr>
             </table>
-            <div class="loginPopup">
+            <div class="ticketPopup">
                 <div class="formPopup" id="popup">
                     <form action="/action_page.php" class="formContainer">
-                        <h2>Please Log in</h2>
-                        <label for="email">
-                            <strong>E-mail</strong>
-                        </label>
-                        <input type="text" id="email" placeholder="Your Email" name="email" required>
-                        <label for="psw">
-                            <strong>Password</strong>
-                        </label>
-                        <input type="password" id="psw" placeholder="Your Password" name="psw" required>
-                        <button type="submit" class="btn">Log in</button>
+                        <h2>Ticket erstellen</h2>
+                        <input type="text" id="titel" placeholder="Titel eingeben" name="titel" required>
+                        <input type="text" id="desc" placeholder="Beschreibung" name="desc" required>
+                        <div class="prio-select">
+                            <select id="prio" name="prio" required>
+                                <option class="dprio" value="Keine" selected disabled hidden>Priorität wählen</option>
+                                <option class="dprio" value="Hoch">Hoch</option>
+                                <option class="dprio" value="Mittel">Mittel</option>
+                                <option class="dprio" value="Niedrig">Niedrig</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Ticket erstellen</button>
                         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                 </div>
