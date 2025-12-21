@@ -1,10 +1,10 @@
 * {
     box-sizing:border-box;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 :root {
-  color-scheme: light dark;
-}
+  color-scheme: light dark;}
 
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -25,6 +25,10 @@
   }
   th {
     background-color: #155a5a;
+  }
+  select#prio, textarea {
+    color: #666;
+    background-color: #ddd;
   }
 }
 
@@ -47,6 +51,13 @@
   }
   th {
     background-color: aqua;
+  }
+  select#prio {
+    background-color: #ddd;
+  }
+  textarea {
+    background-color: #ddd;
+    color: #222;
   }
 }
 
@@ -104,7 +115,7 @@ th.date, td.date {
 
 .openBtn {
   display: flex;
-   justify-content: left;
+  justify-content: left;
 }
 
 .ticketPopup {
@@ -124,31 +135,29 @@ th.date, td.date {
 }
 
 .formContainer {
-  max-width: 300px;
+  max-width: 500px;
   padding: 20px;
 }
 
-.formContainer input[type=text] {
+.formContainer input {
   width: 100%;
   padding: 15px;
   margin: 5px 0 20px 0;
   background: #eee;
   border: 2px solid black;
+  color: #222;
 }
 
-.formContainer input[type=text]:focus {
+.formContainer input:focus {
   background-color: #ddd;
   outline: none;
   border: 2px solid black;
 }
 
-.formContainer input[type=text] {
-  color: #222;
-}
-
-.formContainer input[type=text]#desc {
-  height: 150px;
+.formContainer input#desc {
   text-align: start;
+  height: fit-content;
+  overflow: scroll;
 }
 
 .formContainer .btn {
@@ -171,12 +180,19 @@ th.date, td.date {
   opacity: 1;
 }
 
+.formContainer textarea {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+  resize: none;
+  padding: 15px;
+  border: 2px solid black;
+}
+
 select#prio {
   width: 100%;
   height: 50px;
   border: 2px solid black;
-  color:#666;
-  background-color: #ddd;
   margin-bottom: 15px;
   padding-left: 12px;
 }
