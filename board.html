@@ -17,39 +17,9 @@
                 <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
                 <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
             </div>
-            <table id="tabelle">
-                <tr class="header">
-                    <th class="tid">ID</th>
-                    <th class="titel">Titel</th>
-                    <th class="desc">Beschreibung</th>
-                    <th class="prio">Priorität</th>
-                    <th class="date">Datum</th>
-                </tr>
-                <tr>
-                    <td class="tid">01</td>
-                    <td class="titel">Login-Bug</td>
-                    <td class="desc">Login-Button geht nicht</td>
-                    <td class="prio">Hoch</td>
-                    <td class="date">12.03.2025</td>
-                </tr>
-                <tr>
-                    <td class="tid">02</td>
-                    <td class="titel">Übersicht ist falsch</td>
-                    <td class="desc">CSS wird nicht geladen</td>
-                    <td class="prio">Mittel</td>
-                    <td class="date">25.03.2025</td>
-                </tr>
-                <tr>
-                    <td class="tid">03</td>
-                    <td class="titel">Zu langsam</td>
-                    <td class="desc">Seite lädt sehr langsam</td>
-                    <td class="prio">Niedrig</td>
-                    <td class="date">04.04.2025</td>
-                </tr>
-            </table>
             <div class="ticketPopup">
                 <div class="formPopup" id="popup">
-                    <form action="/action_page.php" class="formContainer">
+                    <form action="aticket.php" method="post" class="formContainer">
                         <h2>Ticket erstellen</h2>
                         <input id="titel" placeholder="Titel eingeben" name="titel" required>
                         <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
