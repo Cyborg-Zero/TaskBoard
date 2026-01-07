@@ -18,6 +18,27 @@
         return $db_verbindung;
     }
     //
+    function film_infos(&$p_infos,$p_verbindungskennung) {
+        $query="SELECT filmID, titel, filmlänge, erscheinungsjahr, genre.bezeichnung, altersfreigabe
+                FROM film
+                JOIN genre
+                ON film.genreID = genre.genreID
+                WHERE titel = '$_POST[titel_ä]'";
+        //
+        $ergebnis=mysqli_query($p_verbindungskennung,$query);
+        $p_infos=array();
+        //
+        while($zeile=mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
+            $p_infos[] = array(
+            'id_ä' => $zeile['filmID'],
+            'titel_ä' => $zeile['titel'],
+            'filmlänge_ä' => $zeile['filmlänge'],
+            'erscheinungsjahr_ä' => $zeile['erscheinungsjahr'],
+            'bezeichnung_ä' => $zeile['bezeichnung'],
+            'altersfreigabe_ä' => $zeile['altersfreigabe']
+        }
+    }
+    //
     function ticket_bearbeiten() {
         $verbindungskennung = datenbank_verbinden();
         if (ticket_sbearbeiten($verbindungskennung)) {
@@ -40,26 +61,4 @@
         $ergebnis = mysqli_query($p_verbindungskennung, $query);
         return $ergebnis;
     }
-    //
-    function ticket_infos{
-            <div class="b_formPopup" id="b_popup">
-                <form action="bearbeiten.php" method="post" class="formContainer">
-                    <h2>Ticket bearbeiten</h2>
-                    <input id="titel" placeholder="Titel eingeben" name="titel" required>
-                    <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
-                    <div class="prio-select">
-                        <select id="prio" name="prio" required>
-                            <option class="dprio" value="Keine" selected disabled hidden>Priorität wählen</option>
-                            <option class="dprio" name="prio" value="Hoch">Hoch</option>
-                            <option class="dprio" name="prio" value="Mittel">Mittel</option>
-                            <option class="dprio" name="prio" value="Niedrig">Niedrig</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn" name="bearbeiten">Ticket bearbeiten</button>
-                    <button type="submit" class="btn" name="löschen">Ticket schließen</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Abbrechen</button>
-                </form>
-            </div>
-    }
-    //         
 ?>
