@@ -17,27 +17,34 @@
                 <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
                 <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
             </div>
+            <div class="tabelle">
+                <?php
+                    include("verbindungsdaten.inc");
+                    require ('aticket.php');
+                    //
+                    echo tickets_abrufen();
+                ?>
+            </div>
             <div class="ticketPopup">
                 <div class="formPopup" id="popup">
-                    <form action="aticket.php" method="post" class="formContainer">
+                    <form action="erstellen.php" method="post" class="formContainer">
                         <h2>Ticket erstellen</h2>
                         <input id="titel" placeholder="Titel eingeben" name="titel" required>
                         <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
                         <div class="prio-select">
                             <select id="prio" name="prio" required>
                                 <option class="dprio" value="Keine" selected disabled hidden>Priorität wählen</option>
-                                <option class="dprio" value="Hoch">Hoch</option>
-                                <option class="dprio" value="Mittel">Mittel</option>
-                                <option class="dprio" value="Niedrig">Niedrig</option>
+                                <option class="dprio" name="prio" value="Hoch">Hoch</option>
+                                <option class="dprio" name="prio" value="Mittel">Mittel</option>
+                                <option class="dprio" name="prio" value="Niedrig">Niedrig</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn">Ticket erstellen</button>
+                        <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
                         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                 </div>
             </div>
-            <script src="suche.js"></script>
-            <script src="popupoc.js"></script>
+            <script src="script.js"></script>
         </div>
     </body>
 </html>

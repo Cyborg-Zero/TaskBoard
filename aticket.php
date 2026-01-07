@@ -9,7 +9,7 @@
         mysqli_set_charset($db_verbindung,"utf8");
         return $db_verbindung;
     }
-
+    //
     function tickets_abrufen() {
         //Datenbank-Parameter
             include("verbindungsdaten.inc");
@@ -18,14 +18,14 @@
         if (!$verbindung)
             die("Der Server kann nicht erreicht werden.");
         mysqli_set_charset($verbindung,"utf8");
-        //Filme aus der Datenbank holen
-        $query="SELECT tid,titel,bezeichnung,priorität,datum 
+        //Tickets aus der Datenbank holen
+        $query="SELECT tid,titel,beschreibung,priorität,datum 
             FROM ticket
             ORDER BY tid";
         $ergebnis=mysqli_query($verbindung,$query);
         if(!$ergebnis)
             echo mysqli_error();
-        //und in die Arrays $titel u. $filmlänge schreiben
+        //und in die Arrays in ID, Titel und Co. schreiben
             $tid=array();
             $titel=array();
             $beschreibung=array();
@@ -42,7 +42,7 @@
             $i++;
         }
         mysqli_free_result($ergebnis);
-        //Ausgabe der Filme
+        //Ausgabe der Tickets
         $i=0;
         //
         echo"<table id=\"tabelle\">";
@@ -52,6 +52,7 @@
                 <th class=\"desc\">Beschreibung</th>
                 <th class=\"prio\">Priorität</th>
                 <th class=\"date\">Datum</th>
+                <th class=\"check\"></th>
             </tr>";
         while($i<count($tid)) {
             echo "<tr>
@@ -60,28 +61,11 @@
                 <td class=\"desc\">$beschreibung[$i]</td>
                 <td class=\"prio\">$priorität[$i]</td>
                 <td class=\"date\">$datum[$i]</td>
+                <td class=\"check\"><img src=\"bearbeitung.png\"></td>
             </tr>";
             $i++;
         }
         echo"</table><br>";
         mysqli_close($verbindung);
-    }
-
-    function ticket_erstellen($p_verbindungskennung) {
-        //
-        $ergebnis=mysqli_query($p_verbindungskennung,$query);
-        $zeile=mysqli_fetch_array($ergebnis);
-        //
-        $query=sprintf("INSERT INTO ticket
-        SET titel='%s',
-        beschreibung=%s,
-        priorität=%s,
-        datum=NOW()",
-            $_POST['titel'],
-            $_POST['beschreibung'],
-            $_POST['priorität']);
-        $ergebnis=mysqli_query($p_verbindungskennung,$query);
-        echo"<div class=\"formPopup\">Der Film wurde angelegt.</div>";
-        mysqli_close($p_verbindungskennung);
     }
 ?>

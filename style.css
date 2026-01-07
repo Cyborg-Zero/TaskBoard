@@ -113,6 +113,11 @@ th.date, td.date {
     text-align: center;
 }
 
+img {
+  width: 15px;
+  height: 15px;
+}
+
 .openBtn {
   display: flex;
   justify-content: left;
