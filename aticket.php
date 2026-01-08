@@ -47,12 +47,12 @@
         //
         echo"<table id=\"tabelle\">";
         echo"<tr class=\"header\">
-                <th class=\"tid\">ID</th>
-                <th class=\"titel\">Titel</th>
-                <th class=\"desc\">Beschreibung</th>
-                <th class=\"prio\">Priorität</th>
-                <th class=\"date\">Datum</th>
-                <th class=\"check\"></th>
+                <th class=\"tid\" onclick=\"sortTable(0)\">ID</th>
+                <th class=\"titel\" onclick=\"sortTable(1)\">Titel</th>
+                <th class=\"desc\" onclick=\"sortTable(2)\">Beschreibung</th>
+                <th class=\"prio\" onclick=\"sortTable(3)\">Priorität</th>
+                <th class=\"date\" onclick=\"sortTable(4)\">Datum</th>
+                <th class=\"check\" onclick=\"sortTable(5)\"></th>
             </tr>";
         while($i<count($tid)) {
             echo "<tr>
@@ -61,7 +61,11 @@
                 <td class=\"desc\">$beschreibung[$i]</td>
                 <td class=\"prio\">$priorität[$i]</td>
                 <td class=\"date\">$datum[$i]</td>
-                <td class=\"tid\"><button onclick=\"openbForm()\" id=\"bearbeiten\" value=\"$tid[$i]\"><i class=\"fa fa-edit\"></td>
+                <td class=\"tid\">
+                    <button type=\"button\" onclick=\"openbForm(<?= $tid[$i] ?>)\" class=\"bearbeiten\">
+                        <i class=\"fa fa-edit\"></i>
+                    </button>
+                </td>
             </tr>";
             $i++;
         }
