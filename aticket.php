@@ -61,7 +61,7 @@
                 <td class=\"desc\">$beschreibung[$i]</td>
                 <td class=\"prio\">$priorität[$i]</td>
                 <td class=\"date\">$datum[$i]</td>
-                <td class=\"check\"><button onclick=\"openbForm()\" id=\"bearbeiten\"><i class=\"fa fa-edit\"></td>
+                <td class=\"tid\"><button onclick=\"openbForm()\" id=\"bearbeiten\" value=\"$tid[$i]\"><i class=\"fa fa-edit\"></td>
             </tr>";
             $i++;
         }

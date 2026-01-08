@@ -18,24 +18,22 @@
         return $db_verbindung;
     }
     //
-    function film_infos(&$p_infos,$p_verbindungskennung) {
-        $query="SELECT filmID, titel, filmlänge, erscheinungsjahr, genre.bezeichnung, altersfreigabe
-                FROM film
-                JOIN genre
-                ON film.genreID = genre.genreID
-                WHERE titel = '$_POST[titel_ä]'";
+    function ticket_infos(&$p_infos,$p_verbindungskennung) {
+        $query="SELECT tid, titel, beschreibung, priorität, datum
+                FROM ticket
+                WHERE tid = '$_POST[tid]'";
         //
         $ergebnis=mysqli_query($p_verbindungskennung,$query);
         $p_infos=array();
         //
         while($zeile=mysqli_fetch_array($ergebnis, MYSQLI_ASSOC)) {
             $p_infos[] = array(
-            'id_ä' => $zeile['filmID'],
-            'titel_ä' => $zeile['titel'],
-            'filmlänge_ä' => $zeile['filmlänge'],
-            'erscheinungsjahr_ä' => $zeile['erscheinungsjahr'],
-            'bezeichnung_ä' => $zeile['bezeichnung'],
-            'altersfreigabe_ä' => $zeile['altersfreigabe']
+            'id' => $zeile['tid'],
+            'titel' => $zeile['titel'],
+            'beschreibung' => $zeile['beschreibung'],
+            'priorität' => $zeile['priorität'],
+            'datum' => $zeile['datum'],
+            );
         }
     }
     //

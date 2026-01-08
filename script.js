@@ -1,5 +1,5 @@
 function Suchen() {
-    var input, filter, table, tr, td, i, j;
+    let input, filter, table, tr, td, i, j;
     input = document.getElementById("suche");
     filter = input.value.toUpperCase();
     table = document.getElementById("tabelle");
