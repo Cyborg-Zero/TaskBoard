@@ -62,7 +62,7 @@
                 <td class=\"prio\">$priorität[$i]</td>
                 <td class=\"date\">$datum[$i]</td>
                 <td class=\"tid\">
-                    <button type=\"button\" onclick=\"openbForm(<?= $tid[$i] ?>)\" class=\"bearbeiten\">
+                    <button type=\"button\" class=\"bearbeiten\" data-tid=\"$tid[$i]\">
                         <i class=\"fa fa-edit\"></i>
                     </button>
                 </td>

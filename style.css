@@ -26,7 +26,7 @@
   th {
     background-color: #155a5a;
   }
-  select#prio, textarea {
+  select#prio, textarea, select#b_prio {
     color: #666;
     background-color: #ddd;
   }
@@ -198,7 +198,7 @@ img {
   border: 2px solid black;
 }
 
-select#prio {
+select#prio, select#b_prio {
   width: 100%;
   height: 50px;
   border: 2px solid black;

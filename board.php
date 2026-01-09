@@ -35,38 +35,36 @@
                         <h2>Ticket erstellen</h2>
                         <input id="titel" placeholder="Titel eingeben" name="titel" required>
                         <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
-                        <div class="prio-select">
                             <select id="prio" name="prio" required>
-                                <option class="dprio" value="Keine" selected disabled hidden>Priorität wählen</option>
-                                <option class="dprio" name="prio" value="Hoch">Hoch</option>
-                                <option class="dprio" name="prio" value="Mittel">Mittel</option>
-                                <option class="dprio" name="prio" value="Niedrig">Niedrig</option>
+                                <option value="" selected disabled hidden>Priorität wählen</option>
+                                <option value="Hoch">Hoch</option>
+                                <option value="Mittel">Mittel</option>
+                                <option value="Niedrig">Niedrig</option>
                             </select>
-                        </div>
-                        <button type="button" class="btn" name="erstellen">Ticket erstellen</button>
+                        <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
                         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                 </div>
                 <div class="b_formPopup" id="b_popup">
                     <form action="bearbeiten.php" method="post" class="formContainer">
                         <h2>Ticket bearbeiten</h2>
-                        <input type="hidden" id="ticket_id" name="tid">
-                        <input id="titel" name="titel" required>
-                        <textarea id="desc" name="desc" required></textarea>
-                        <div class="prio-select">
-                            <select id="prio" name="prio" required>
-                                <option class="dprio" value="Keine" selected disabled hidden>Priorität wählen</option>
-                                <option class="dprio" name="prio" value="Hoch">Hoch</option>
-                                <option class="dprio" name="prio" value="Mittel">Mittel</option>
-                                <option class="dprio" name="prio" value="Niedrig">Niedrig</option>
+                            <input type="hidden" id="ticket_id" name="tid">
+                            <input id="b_titel" name="titel" required>
+                            <textarea id="b_desc" name="desc" required></textarea>
+                            <select id="b_prio" name="prio" required>
+                                <option value="" selected disabled hidden>Priorität wählen</option>
+                                <option value="Hoch">Hoch</option>
+                                <option value="Mittel">Mittel</option>
+                                <option value="Niedrig">Niedrig</option>
                             </select>
-                        </div>
-                        <button type="button" class="btn" name="bearbeiten">Ticket bearbeiten</button>
-                        <button type="button" class="btn" name="löschen">Ticket schließen</button>
+                        <button type="submit" class="btn" name="bearbeiten">Ticket bearbeiten</button>
+                        <button type="button" class="btn" onclick="loescheTicket()">Ticket schließen</button>
                         <button type="button" class="btn cancel" onclick="closebForm()">Abbrechen</button>
                     </form>
                 </div>
             </div>
         </div>
+        <script src="bearbeiten.js"></script>
+        <script src="löschen.js"></script>
     </body>
 </html>
