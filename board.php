@@ -8,9 +8,7 @@
         <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="popup.js"></script>
-        <script src="sortieren.js"></script>
-        <script src="suchen.js"></script>
+        <script type="module" src="js/main.js"></script>
     </head>
     <body>
         <header>
@@ -64,7 +62,5 @@
                 </div>
             </div>
         </div>
-        <script src="bearbeiten.js"></script>
-        <script src="löschen.js"></script>
     </body>
 </html>

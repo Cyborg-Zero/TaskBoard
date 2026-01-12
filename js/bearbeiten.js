@@ -1,5 +1,5 @@
 // Pop-up öffnen und Ticket laden
-function openbForm(tid) {
+window.openbForm = function(tid) {
     console.log("Aufruf von ticket_laden.php mit ID:", tid);
     //
     fetch("ticket_laden.php?id=" + tid)
@@ -50,7 +50,7 @@ document.addEventListener("click", function (e) {
     openbForm(tid);
 });
 // Pop-up schließen
-function closebForm() {
+window.closebForm = function() {
     const popup = document.getElementById("b_popup");
     if (popup) popup.style.display = "none";
 }

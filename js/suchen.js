@@ -1,4 +1,4 @@
-function Suchen() {
+window.Suchen= function() {
     let input, filter, table, tr, td, i, j;
     input = document.getElementById("suche");
     filter = input.value.toUpperCase();

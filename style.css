@@ -108,6 +108,21 @@ th.prio, td.prio {
     padding-left: 5px;
 }
 
+.prio-hoch {
+  color: red;
+  font-weight: bold;
+}
+
+.prio-mittel {
+  color: orange;
+  font-weight: bold;
+}
+
+.prio-niedrig {
+  color: white;
+  font-weight: bold;
+}
+
 th.date, td.date {
     width: 100px;
     text-align: center;

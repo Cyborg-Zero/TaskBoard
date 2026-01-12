@@ -1,4 +1,4 @@
-function loescheTicket() {
+window.loescheTicket = function() {
     const tid = document.getElementById("ticket_id").value;
     if (!tid) return;
     //

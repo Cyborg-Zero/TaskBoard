@@ -1,8 +1,8 @@
-function myFunction() {
+window.myFunction =function() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-function filterFunction() {
+window.filterFunction = function() {
     const filter = input.value.toUpperCase();
     const div = document.getElementById("myDropdown");
     const a = div.getElementsByTagName("a");
