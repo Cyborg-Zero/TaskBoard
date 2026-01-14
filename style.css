@@ -75,6 +75,7 @@ header, div.liste {
 
 div.liste input:last-child {
   float: right;
+  margin-left: 10px;
 }
 
 .suche {

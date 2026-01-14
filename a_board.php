@@ -12,20 +12,20 @@
     </head>
     <body>
         <header>
-            <h1>TaskBoard</h1>
+            <h1>TaskBoard - Archiv</h1>
         </header>
         <div class="liste">
             <div class="suche">
                 <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
-                <a href="a_board.php">
-                    <input type="button" value="Zum Archiv">
+                <a href="board.php">
+                    <input type="button" value="Aktuelle Tickets">
                 </a>
                 <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
             </div>
             <div class="tabelle">
                 <?php
                     include("verbindungsdaten.inc");
-                    require ('aticket.php');
+                    require ('archiv.php');
                     //
                     echo tickets_abrufen();
                 ?>
@@ -58,8 +58,6 @@
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="submit" class="btn" name="bearbeiten">Ticket bearbeiten</button>
-                        <button type="button" class="btn" onclick="loescheTicket()">Ticket schließen</button>
                         <button type="button" class="btn cancel" onclick="closebForm()">Abbrechen</button>
                     </form>
                 </div>
