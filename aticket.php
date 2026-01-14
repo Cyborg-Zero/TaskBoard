@@ -38,7 +38,7 @@
             $titel[$i]=$zeile[1];
             $beschreibung[$i]=$zeile[2];
             $priorität[$i]=$zeile[3];
-            $datum[$i]=$zeile[4];
+            $datum[$i] = date('d.m.Y', strtotime($zeile[4]));
             $i++;
         }
         mysqli_free_result($ergebnis);

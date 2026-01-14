@@ -98,7 +98,7 @@ th {
 }
 
 td.tid, th.tid {
-    width: 35px;
+    width: 50px;
     text-align: center;
 }
 
@@ -136,8 +136,29 @@ th.date, td.date {
     text-align: center;
 }
 
+th.arch, td.arch {
+    width: 100px;
+    text-align: center;
+}
+
 th.check, td.check {
   width: 35px;
+}
+
+th::after {
+  content: " ";
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+th.asc::after {
+  content: " ▲";
+  opacity: 1;
+}
+
+th.desc::after {
+  content: " ▼";
+  opacity: 1;
 }
 
 img {

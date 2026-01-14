@@ -19,7 +19,7 @@
             die("Der Server kann nicht erreicht werden.");
         mysqli_set_charset($verbindung,"utf8");
         //Tickets aus der Datenbank holen
-        $query="SELECT tid,titel,beschreibung,priorität,datum 
+        $query="SELECT tid,titel,beschreibung,priorität,datum, archiviert 
             FROM archiv
             ORDER BY tid";
         $ergebnis=mysqli_query($verbindung,$query);
@@ -31,6 +31,7 @@
             $beschreibung=array();
             $priorität=array();
             $datum=array();
+            $archiviert=array();
         //
         $i=0;
         while($zeile=mysqli_fetch_array($ergebnis)) {
@@ -38,7 +39,8 @@
             $titel[$i]=$zeile[1];
             $beschreibung[$i]=$zeile[2];
             $priorität[$i]=$zeile[3];
-            $datum[$i]=$zeile[4];
+            $datum[$i]=date('d.m.Y', strtotime($zeile[4]));
+            $archiviert[$i]=date('d.m.Y', strtotime($zeile[5]));
             $i++;
         }
         mysqli_free_result($ergebnis);
@@ -52,7 +54,8 @@
                 <th class=\"desc\" onclick=\"sortTable(2)\">Beschreibung</th>
                 <th class=\"prio\" onclick=\"sortTable(3)\">Priorität</th>
                 <th class=\"date\" onclick=\"sortTable(4)\">Datum</th>
-                <th class=\"check\" onclick=\"sortTable(5)\"></th>
+                <th class=\"arch\" onclick=\"sortTable(5)\">Archiviert</th>
+                <th class=\"check\"></th>
             </tr>";
         while($i<count($tid)) {
             echo "<tr>
@@ -61,6 +64,7 @@
                 <td class=\"desc\">$beschreibung[$i]</td>
                 <td class=\"prio\">$priorität[$i]</td>
                 <td class=\"date\">$datum[$i]</td>
+                <td class=\"arch\">$archiviert[$i]</td>
                 <td class=\"tid\">
                     <button type=\"button\" class=\"bearbeiten\" data-tid=\"$tid[$i]\">
                         <i class=\"fa fa-edit\"></i>

@@ -19,22 +19,36 @@
 CREATE DATABASE IF NOT EXISTS `tickets` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `tickets`;
 
--- Exportiere Struktur von Tabelle tickets.ticket
-CREATE TABLE IF NOT EXISTS `ticket` (
-  `tid` int(11) NOT NULL AUTO_INCREMENT,
+-- Exportiere Struktur von Tabelle tickets.archiv
+CREATE TABLE IF NOT EXISTS `archiv` (
+  `tid` int(255) NOT NULL,
   `titel` varchar(50) NOT NULL,
   `beschreibung` varchar(255) NOT NULL,
   `priorität` varchar(10) NOT NULL,
   `datum` date NOT NULL,
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Exportiere Daten aus Tabelle tickets.ticket: ~4 rows (ungefähr)
+-- Exportiere Daten aus Tabelle tickets.archiv: ~2 rows (ungefähr)
+INSERT INTO `archiv` (`tid`, `titel`, `beschreibung`, `priorität`, `datum`) VALUES
+	(2, 'Server nicht erreichbar', 'Server tot', 'Hoch', '2026-01-07'),
+	(5, 'Archiv-Test', 'Dies ist ein Test-Ticket für die DB um die Archiv-Seite zu testen', 'Mittel', '2026-01-14');
+
+-- Exportiere Struktur von Tabelle tickets.ticket
+CREATE TABLE IF NOT EXISTS `ticket` (
+  `tid` int(255) NOT NULL AUTO_INCREMENT,
+  `titel` varchar(50) NOT NULL,
+  `beschreibung` varchar(255) NOT NULL,
+  `priorität` varchar(10) NOT NULL,
+  `datum` date NOT NULL,
+  PRIMARY KEY (`tid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Exportiere Daten aus Tabelle tickets.ticket: ~3 rows (ungefähr)
 INSERT INTO `ticket` (`tid`, `titel`, `beschreibung`, `priorität`, `datum`) VALUES
 	(1, 'CSS-Probleme', 'Die CSS-Datei wird wohl nicht richtig geladen', 'Hoch', '2025-02-23'),
-	(2, 'Server nicht erreichbar', 'Server tot', 'Hoch', '2026-01-07'),
 	(3, 'Seite lädt langsam', 'Irgendwas stimmt mit der Kapazität des Server nicht weil es ewig lädt', 'Mittel', '2026-01-07'),
-	(6, 'Schnee schieben', 'Der Hof muss vom Schnee befreit werden, Dringend', 'Hoch', '2026-01-09');
+	(4, 'Schnee schieben', 'Der Hof muss vom Schnee befreit werden, Dringend!', 'Niedrig', '2026-01-09');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
