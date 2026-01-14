@@ -2,7 +2,7 @@ window.loescheTicket = function() {
     const tid = document.getElementById("ticket_id").value;
     if (!tid) return;
     //
-    if (!confirm("Willst du dieses Ticket wirklich löschen?")) return;
+    if (!confirm("Willst du dieses Ticket wirklich archivieren?")) return;
     //
     fetch("ticket_loeschen.php", {
         method: "POST",
@@ -17,5 +17,5 @@ window.loescheTicket = function() {
         // Tabelle neu laden
         location.reload(); // einfacher Weg, damit Tabelle aktuell ist
     })
-    .catch(err => console.error("Fehler beim Löschen:", err));
+    .catch(err => console.error("Fehler beim Archivieren:", err));
 }

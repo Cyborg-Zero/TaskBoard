@@ -53,7 +53,6 @@
                             <input id="b_titel" name="titel" required>
                             <textarea id="b_desc" name="desc" required></textarea>
                             <select id="b_prio" name="prio" required>
-                                <option value="" selected disabled hidden>Priorität wählen</option>
                                 <option value="Hoch">Hoch</option>
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>

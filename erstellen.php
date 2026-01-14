@@ -34,23 +34,41 @@
         if (empty($_POST['desc'])) {
             return false;
         }
-        if (empty($_POST['prio'])) {
+        if ($_POST['prio'] === "Priorität wählen") {
             return false;
         }
         return true;
     }
     //
     function ticket_schreiben($p_verbindungskennung) {
-        $query = sprintf("INSERT INTO ticket
-                        SET titel='%s',
-                            beschreibung='%s',
-                            priorität='%s',
-                            datum=NOW()",
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['titel']),
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['desc']),
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['prio']));
-        //
-        $ergebnis = mysqli_query($p_verbindungskennung, $query);
-        return $ergebnis;
-    }   
+        try {
+            // SQL-Query mit Platzhaltern für Prepared Statement vorbereiten
+            $sql = "INSERT INTO ticket (titel, beschreibung, priorität, datum) 
+                    VALUES (?, ?, ?, NOW())";
+            // Prepared Statement erstellen
+            $stmt = mysqli_prepare($p_verbindungskennung, $sql);
+            // Parameter an Statement binden (sss = 3 Strings)
+            mysqli_stmt_bind_param($stmt, "sss", 
+                $_POST['titel'], 
+                $_POST['desc'], 
+                $_POST['prio']);
+            // Statement ausführen
+            mysqli_stmt_execute($stmt);
+            // Statement-Ressourcen freigeben
+            mysqli_stmt_close($stmt);
+            // Transaktion bestätigen
+            mysqli_commit($p_verbindungskennung);
+            // Weiterleitung zur Board-Seite mit Erfolgsmeldung
+            header("Location: board.php?success=1");
+            exit(); // Script-Ausführung beenden
+        } catch (Exception $e) {
+            // Bei Fehler: Transaktion rückgängig machen
+            mysqli_rollback($p_verbindungskennung);
+            // Weiterleitung mit Fehlermeldung
+            header("Location: board.php?error=" . urlencode($e->getMessage()));
+            exit();
+        }
+    // Datenbankverbindung schließen
+    mysqli_close($p_verbindungskennung);
+    }
 ?>

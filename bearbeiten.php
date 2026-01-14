@@ -47,16 +47,39 @@
     }
     //
     function ticket_sbearbeiten($p_verbindungskennung) {
-        $query = sprintf("UPDATE ticket
-                        SET titel='%s',
-                            beschreibung='%s',
-                            priorität='%s'
-                        WHERE tid='$_POST[tid]'",
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['titel']),
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['desc']),
-                        mysqli_real_escape_string($p_verbindungskennung, $_POST['prio']));
-        //
-        $ergebnis = mysqli_query($p_verbindungskennung, $query);
-        return $ergebnis;
+        try {
+            // SQL-Query mit Platzhaltern für Prepared Statement vorbereiten
+            $sql = "UPDATE ticket 
+                    SET titel = ?, 
+                        beschreibung = ?, 
+                        priorität = ?
+                    WHERE tid = ?";
+            // Prepared Statement erstellen
+            $stmt = mysqli_prepare($p_verbindungskennung, $sql);
+            // Parameter an Statement binden (sssi = 3 Strings + 1 Integer)
+            mysqli_stmt_bind_param($stmt, "sssi",
+                $_POST['titel'], 
+                $_POST['desc'], 
+                $_POST['prio'],
+                $_POST['tid']  // tid auch mit Prepared Statement!
+            );
+            // Statement ausführen
+            mysqli_stmt_execute($stmt);
+            // Statement-Ressourcen freigeben
+            mysqli_stmt_close($stmt);
+            // Transaktion bestätigen
+            mysqli_commit($p_verbindungskennung);
+            // Weiterleitung zur Board-Seite mit Erfolgsmeldung
+            header("Location: board.php?success=1");
+            exit();
+        } catch (Exception $e) {
+            // Bei Fehler: Transaktion rückgängig machen
+            mysqli_rollback($p_verbindungskennung);
+            // Weiterleitung mit Fehlermeldung
+            header("Location: board.php?error=" . urlencode($e->getMessage()));
+            exit();
+        }
+        // Datenbankverbindung schließen
+        mysqli_close($p_verbindungskennung);
     }
 ?>
