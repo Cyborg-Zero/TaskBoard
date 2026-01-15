@@ -8,12 +8,12 @@ window.openbForm = function(tid) {
             // Pop-up zuerst sichtbar machen
             const popup = document.getElementById("b_popup");
             popup.style.display = "block";
-            //
+            //Zum Debuggen
             console.log("Ticket geladen:", ticket); // Debug
             console.log("Titel-Feld:", document.getElementById("b_titel"));
             console.log("Beschreibung-Feld:", document.getElementById("b_desc"));
             console.log("Priorität-Feld:", document.getElementById("b_prio"));
-            //
+            //Titel des Tickets
             const titelInput = document.getElementById("b_titel");
             if (titelInput) titelInput.value = ticket.titel || "";
             // Textarea Beschreibung

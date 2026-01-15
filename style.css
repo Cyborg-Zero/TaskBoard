@@ -145,22 +145,6 @@ th.check, td.check {
   width: 35px;
 }
 
-th::after {
-  content: " ";
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-th.asc::after {
-  content: " ▲";
-  opacity: 1;
-}
-
-th.desc::after {
-  content: " ▼";
-  opacity: 1;
-}
-
 img {
   width: 15px;
   height: 15px;
