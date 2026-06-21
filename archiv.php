@@ -19,7 +19,7 @@
             die("Der Server kann nicht erreicht werden.");
         mysqli_set_charset($verbindung,"utf8");
         //Tickets aus der Datenbank holen
-        $query="SELECT tid,titel,beschreibung,priorität,datum, archiviert 
+        $query="SELECT tid,titel,beschreibung,priorität,datum,archiviert 
             FROM archiv
             ORDER BY tid";
         $ergebnis=mysqli_query($verbindung,$query);

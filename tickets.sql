@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `beschreibung` varchar(255) NOT NULL,
   `priorität` varchar(10) NOT NULL,
   `datum` date NOT NULL,
+  `archiviert` date NOT NULL,
   PRIMARY KEY (`tid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
