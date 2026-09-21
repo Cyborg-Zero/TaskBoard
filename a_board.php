@@ -43,11 +43,11 @@
                                 <option value="Niedrig">Niedrig</option>
                             </select>
                         <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        <button type="button" class="btn_cancel" onclick="closeForm()">Close</button>
                     </form>
                 </div>
                 <div class="b_formPopup" id="b_popup">
-                    <form action="bearbeiten.php" method="post" class="formContainer">
+                    <form action="nachlesen.php" method="post" class="formContainer">
                         <h2>Ticket bearbeiten</h2>
                             <input type="hidden" id="ticket_id" name="tid">
                             <input id="b_titel" name="titel" required>
@@ -58,7 +58,7 @@
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="button" class="btn cancel" onclick="closebForm()">Abbrechen</button>
+                        <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
                     </form>
                 </div>
             </div>

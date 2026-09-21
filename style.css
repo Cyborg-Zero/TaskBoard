@@ -85,12 +85,15 @@ div.liste input:last-child {
 #tabelle {
     width: 100%;
     cursor: default;
+    border-radius: 10px;
+    border-color: black;
 }
 
 #tabelle, tr, th, td{
-    border-collapse: collapse;
-    border: 2px solid black;
     height: 30px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    overflow: hidden;
 }
 
 th {
@@ -167,13 +170,17 @@ img {
    left: 45%;
    top: 5%;
    transform: translate(-50%, 5%);
-   border: 3px solid #999999;
+   border: 3px solid black;
+   border-radius: 40px;
    z-index: 9;
+   overflow: hidden;
 }
 
 .formContainer {
   max-width: 500px;
+  max-height: 100%;
   padding: 20px;
+  border-radius: 20px;
 }
 
 .formContainer input {
@@ -197,19 +204,40 @@ img {
   overflow: scroll;
 }
 
-.formContainer .btn {
+.formContainer .btn, .btn_edit {
   padding: 12px 20px;
   border: none;
   background-color: #8ebf42;
   color: #fff;
   cursor: pointer;
-  width: 100%;
+  width: auto;
+  margin-bottom: 15px;
+  margin-right: 20px;
+  opacity: 0.8;
+}
+
+.formContainer .btn_delete {
+  background-color: orangered;
+  margin-left:20px;
+  padding: 12px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: auto;
   margin-bottom: 15px;
   opacity: 0.8;
 }
 
-.formContainer .cancel {
+.formContainer .btn_cancel {
   background-color: #cc0000;
+  margin-left:20px;
+  padding: 12px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: auto;
+  margin-bottom: 15px;
+  opacity: 0.8;
 }
 
 .formContainer .btn:hover,

@@ -43,7 +43,7 @@
                                 <option value="Niedrig">Niedrig</option>
                             </select>
                         <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        <button type="button" class="btn_cancel" onclick="closeForm()">Abbrechen</button>
                     </form>
                 </div>
                 <div class="b_formPopup" id="b_popup">
@@ -57,9 +57,9 @@
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="submit" class="btn" name="bearbeiten">Ticket bearbeiten</button>
-                        <button type="button" class="btn" onclick="loescheTicket()">Ticket schließen</button>
-                        <button type="button" class="btn cancel" onclick="closebForm()">Abbrechen</button>
+                        <button type="submit" class="btn_edit" name="bearbeiten">Ticket bearbeiten</button>
+                        <button type="button" class="btn_delete" onclick="loescheTicket()">Ticket schließen</button>
+                        <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
                     </form>
                 </div>
             </div>
