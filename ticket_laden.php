@@ -8,7 +8,7 @@ mysqli_set_charset($db,"utf8");
 $tid = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $query = "
-    SELECT tid, titel, beschreibung, priorität AS prioritaet, datum
+    SELECT tid, titel, beschreibung, priorität AS prioritaet, status, datum
     FROM ticket
     WHERE tid = $tid
     LIMIT 1

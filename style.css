@@ -26,7 +26,7 @@
   th {
     background-color: #155a5a;
   }
-  select#prio, textarea, select#b_prio {
+  select#prio, textarea, select#b_prio, select#b_status {
     color: #666;
     background-color: #ddd;
   }
@@ -52,7 +52,7 @@
   th {
     background-color: aqua;
   }
-  select#prio {
+  select#prio, select#b_status {
     background-color: #ddd;
   }
   textarea {
@@ -79,44 +79,49 @@ div.liste input:last-child {
 }
 
 .suche {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 #tabelle {
-    width: 100%;
-    cursor: default;
-    border-radius: 10px;
-    border-color: black;
+  width: 100%;
+  cursor: default;
+  border-radius: 10px;
+  border-color: black;
 }
 
 #tabelle, tr, th, td{
-    height: 30px;
-    border-collapse: collapse;
-    border: 1px solid black;
-    overflow: hidden;
+  height: 30px;
+  border-collapse: collapse;
+  border: 1px solid black;
+  overflow: hidden;
 }
 
 th {
-    text-align: center;
+  text-align: center;
 }
 
 td.tid, th.tid {
-    width: 50px;
-    text-align: center;
+  width: 50px;
+  text-align: center;
 }
 
 th.titel, td.titel {
-    width: 175px;
-    padding-left: 5px;
+  width: 175px;
+  padding-left: 5px;
 }
 
 th.desc, td.desc {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 th.prio, td.prio {
-    width: 100px;
-    padding-left: 5px;
+  width: 100px;
+  padding-left: 5px;
+}
+
+th.status, td.status {
+  width: 125px;
+  padding-left: 5px;
 }
 
 .prio-hoch {
@@ -135,13 +140,13 @@ th.prio, td.prio {
 }
 
 th.date, td.date {
-    width: 100px;
-    text-align: center;
+  width: 100px;
+  text-align: center;
 }
 
 th.arch, td.arch {
-    width: 100px;
-    text-align: center;
+  width: 100px;
+  text-align: center;
 }
 
 th.check, td.check {
@@ -161,23 +166,24 @@ img {
 .ticketPopup {
   position: relative;
   text-align: center;
+  display: flex;
   width: 100%;
 }
 
 .formPopup, .b_formPopup {
-   display: none;
-   position: fixed;
-   left: 45%;
-   top: 5%;
-   transform: translate(-50%, 5%);
-   border: 3px solid black;
-   border-radius: 40px;
-   z-index: 9;
-   overflow: hidden;
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-50%, 5%);
+  border: 3px solid black;
+  border-radius: 40px;
+  z-index: 9;
+  overflow: hidden;
 }
 
 .formContainer {
-  max-width: 500px;
+  max-width: 750px;
   max-height: 100%;
   padding: 20px;
   border-radius: 20px;
@@ -204,40 +210,34 @@ img {
   overflow: scroll;
 }
 
-.formContainer .btn, .btn_edit {
-  padding: 12px 20px;
-  border: none;
-  background-color: #8ebf42;
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formContainer .btn, .btn_edit, .btn_delete, .btn_cancel {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
-  width: auto;
-  margin-bottom: 15px;
-  margin-right: 20px;
   opacity: 0.8;
+  width: 100px;
+  height: 55px;
+}
+
+.formContainer .btn, .formContainer .btn_edit {
+  background-color: #8ebf42;
 }
 
 .formContainer .btn_delete {
   background-color: orangered;
-  margin-left:20px;
-  padding: 12px 20px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  width: auto;
-  margin-bottom: 15px;
-  opacity: 0.8;
 }
 
 .formContainer .btn_cancel {
   background-color: #cc0000;
-  margin-left:20px;
-  padding: 12px 20px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  width: auto;
-  margin-bottom: 15px;
-  opacity: 0.8;
 }
 
 .formContainer .btn:hover,
@@ -254,12 +254,17 @@ img {
   border: 2px solid black;
 }
 
-select#prio, select#b_prio {
-  width: 100%;
-  height: 50px;
-  border: 2px solid black;
-  margin-bottom: 15px;
-  padding-left: 12px;
+.auswahl {
+  display: flex;
+  justify-content: center;
+}
+
+.prio {
+  margin: 5px 10px 5px 5px;
+}
+
+.b_status {
+  margin: 5px 5px 5px 10px;
 }
 
 .dropbtn:hover, .dropbtn:focus {

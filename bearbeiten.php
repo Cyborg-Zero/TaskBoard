@@ -19,7 +19,7 @@
     }
     //
     function ticket_infos(&$p_infos,$p_verbindungskennung) {
-        $query="SELECT tid, titel, beschreibung, priorität, datum
+        $query="SELECT tid, titel, beschreibung, priorität, status, datum
                 FROM ticket
                 WHERE tid = '$_POST[tid]'";
         //
@@ -32,6 +32,7 @@
             'titel' => $zeile['titel'],
             'beschreibung' => $zeile['beschreibung'],
             'priorität' => $zeile['priorität'],
+            'status' => $zeile['status'],
             'datum' => $zeile['datum'],
             );
         }
@@ -52,15 +53,17 @@
             $sql = "UPDATE ticket 
                     SET titel = ?, 
                         beschreibung = ?, 
-                        priorität = ?
+                        priorität = ?,
+                        status = ?
                     WHERE tid = ?";
             // Prepared Statement erstellen
             $stmt = mysqli_prepare($p_verbindungskennung, $sql);
-            // Parameter an Statement binden (sssi = 3 Strings + 1 Integer)
-            mysqli_stmt_bind_param($stmt, "sssi",
+            // Parameter an Statement binden (sssi = 4 Strings + 1 Integer)
+            mysqli_stmt_bind_param($stmt, "ssssi",
                 $_POST['titel'], 
                 $_POST['desc'], 
                 $_POST['prio'],
+                $_POST['status'],
                 $_POST['tid']  // tid auch mit Prepared Statement!
             );
             // Statement ausführen

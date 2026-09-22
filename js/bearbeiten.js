@@ -13,6 +13,7 @@ window.openbForm = function(tid) {
             console.log("Titel-Feld:", document.getElementById("b_titel"));
             console.log("Beschreibung-Feld:", document.getElementById("b_desc"));
             console.log("Priorität-Feld:", document.getElementById("b_prio"));
+            console.log("Status-Feld:", document.getElementById("b_status"));
             //Titel des Tickets
             const titelInput = document.getElementById("b_titel");
             if (titelInput) titelInput.value = ticket.titel || "";
@@ -35,6 +36,41 @@ window.openbForm = function(tid) {
                     }
                 }
                 if (!found) prioSelect.selectedIndex = 0; // Standard auswählen, falls nicht gefunden
+            };
+            const statusSelect = document.getElementById("b_status");
+            if (statusSelect) {
+                // 1. Hole den Rohwert aus dem JSON
+                const ticketStatusRaw = ticket.status; 
+                
+                // 2. Fallback: Wenn status nicht existiert, versuche Status (Groß/S Klein)
+                const ticketStatus = ticketStatusRaw !== undefined 
+                    ? ticketStatusRaw 
+                    : (ticket['Status'] !== undefined ? ticket['Status'] : (ticket['status_id'] !== undefined ? String(ticket['status_id']) : ""));
+
+                console.log("Roh-Status aus JSON:", JSON.stringify(ticketStatus)); // Hier siehst du den echten Wert!
+
+                const ziel = String(ticketStatus).trim(); // Nur Leerzeichen entfernen, Groß/Klein behalten!
+
+                let found = false;
+                for (let i = 0; i < statusSelect.options.length; i++) {
+                    const optVal = statusSelect.options[i].value;
+                    const optText = statusSelect.options[i].text;
+                    
+                    // Vergleich: Wert ODER Text des Options (wegen Tippfehlern im HTML)
+                    if (optVal.trim() === ziel || optText.trim() === ziel) {
+                        statusSelect.selectedIndex = i;
+                        found = true;
+                        console.log("✅ Status gefunden: " + ziel);
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    console.error("❌ Status NICHT gefunden. Erwartet:", JSON.stringify(ziel));
+                    console.error("   Verfügbare Optionen im HTML:", [...statusSelect.options].map(o => o.value));
+                    // Fallback: erstes Feld
+                    statusSelect.selectedIndex = 0;
+                }
             }
         })
     .catch(err => console.error("Fehler beim Laden des Tickets:", err));

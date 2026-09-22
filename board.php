@@ -14,21 +14,22 @@
         <header>
             <h1>TaskBoard</h1>
         </header>
-        <div class="liste">
-            <div class="suche">
-                <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
-                <a href="a_board.php">
-                    <input type="button" value="Zum Archiv">
-                </a>
-                <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
-            </div>
-            <div class="tabelle">
-                <?php
-                    include("verbindungsdaten.inc");
-                    require ('aticket.php');
-                    //
-                    echo tickets_abrufen();
-                ?>
+            <div class="liste">
+                <div class="suche">
+                    <input type="text" id="suche" oninput="Suchen()" placeholder="Suche nach Tickets" title="Tippe ein Suchbegriff ein" size="50">
+                    <a href="a_board.php">
+                        <input type="button" value="Zum Archiv">
+                    </a>
+                    <input type="button" onclick="openForm()" id="erstellen" value="Ticket erstellen">
+                </div>
+                <div class="tabelle">
+                    <?php
+                        include("verbindungsdaten.inc");
+                        require ('aticket.php');
+                        //
+                        echo tickets_abrufen();
+                    ?>
+                </div>
             </div>
             <div class="ticketPopup">
                 <div class="formPopup" id="popup">
@@ -36,14 +37,18 @@
                         <h2>Ticket erstellen</h2>
                         <input id="titel" placeholder="Titel eingeben" name="titel" required>
                         <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
+                        <div class="prio">    
                             <select id="prio" name="prio" required>
                                 <option value="" selected disabled hidden>Priorität wählen</option>
                                 <option value="Hoch">Hoch</option>
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
-                        <button type="button" class="btn_cancel" onclick="closeForm()">Abbrechen</button>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
+                            <button type="button" class="btn_cancel" onclick="closeForm()">Abbrechen</button>
+                        </div>
                     </form>
                 </div>
                 <div class="b_formPopup" id="b_popup">
@@ -52,14 +57,29 @@
                             <input type="hidden" id="ticket_id" name="tid">
                             <input id="b_titel" name="titel" required>
                             <textarea id="b_desc" name="desc" required></textarea>
+                    <div class="auswahl">
+                        <div class="prio">
+                            <label for="b_prio">Priorität:</label>
                             <select id="b_prio" name="prio" required>
                                 <option value="Hoch">Hoch</option>
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="submit" class="btn_edit" name="bearbeiten">Ticket bearbeiten</button>
-                        <button type="button" class="btn_delete" onclick="loescheTicket()">Ticket schließen</button>
-                        <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
+                        </div>
+                        <div class="b_status">
+                            <label for="b_status">Status:</label>
+                            <select id="b_status" name="status" required>
+                                <option value="Offen">Offen</option>
+                                <option value="In Bearbeitung">In Bearbeitung</option>
+                                <option value="Abgeschlossen">Abgeschlossen</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="buttons">
+                            <button type="submit" class="btn_edit" name="bearbeiten">Ticket bearbeiten</button>
+                            <button type="button" class="btn_delete" onclick="loescheTicket()">Ticket schließen</button>
+                            <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
+                        </div>
                     </form>
                 </div>
             </div>

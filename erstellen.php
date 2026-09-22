@@ -43,8 +43,8 @@
     function ticket_schreiben($p_verbindungskennung) {
         try {
             // SQL-Query mit Platzhaltern für Prepared Statement vorbereiten
-            $sql = "INSERT INTO ticket (titel, beschreibung, priorität, datum) 
-                    VALUES (?, ?, ?, NOW())";
+            $sql = "INSERT INTO ticket (titel, beschreibung, priorität, status, datum) 
+                    VALUES (?, ?, ?, 'Offen', NOW())";
             // Prepared Statement erstellen
             $stmt = mysqli_prepare($p_verbindungskennung, $sql);
             // Parameter an Statement binden (sss = 3 Strings)
