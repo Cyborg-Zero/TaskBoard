@@ -77,7 +77,7 @@
                     </div>
                         <div class="buttons">
                             <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
-                            <button type="button" class="btn_export" onclick="">Exportieren</button>
+                            <button type="button" class="btn_export" onclick="exportTicket()">Exportieren</button>
                         </div>
                     </form>
                 </div>

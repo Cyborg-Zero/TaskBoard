@@ -5,6 +5,11 @@ window.openbForm = function(tid) {
     fetch("a_ticket_laden.php?id=" + tid)
         .then(res => res.json())
         .then(ticket => {
+            // --- NEU: Rohdaten für den JSON-Export zwischenspeichern ---
+            // Enthält u.a. 'datum' und 'archiviert' aus der DB
+            window._archivTicketRohdaten = ticket;
+            // ------------------------------------------------------------
+
             // Pop-up zuerst sichtbar machen
             const popup = document.getElementById("a_popup");
             popup.style.display = "block";
@@ -31,8 +36,8 @@ window.openbForm = function(tid) {
             if (prioSelect) {
                 let found = false;
                 for (let i = 0; i < prioSelect.options.length; i++) {
-                    console.log("Option Value:", prioSelect.options[i].value, "Ticket Priorität:", ticket.prioritaet); // Debug
-                    if (prioSelect.options[i].value === ticket.prioritaet) {
+                    console.log("Option Value:", prioSelect.options[i].value, "Ticket Priorität:", ticket.priorität); // Debug
+                    if (prioSelect.options[i].value === ticket.priorität) {
                         prioSelect.selectedIndex = i;
                         found = true;
                         break;
@@ -92,4 +97,8 @@ document.addEventListener("click", function (e) {
 window.closebForm = function() {
     const popup = document.getElementById("a_popup");
     if (popup) popup.style.display = "none";
-}
+
+    // --- NEU: Archiv-Rohdaten verwerfen ---
+    // Verhindert, dass beim nächsten Export versehentlich alte Daten genutzt werden
+    window._archivTicketRohdaten = null;
+};
