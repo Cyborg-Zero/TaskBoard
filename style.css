@@ -170,7 +170,7 @@ img {
   width: 100%;
 }
 
-.formPopup, .b_formPopup {
+.formPopup, .b_formPopup, .a_formPopup {
   display: none;
   position: fixed;
   left: 45%;
@@ -216,7 +216,7 @@ img {
   justify-content: center;
 }
 
-.formContainer .btn, .btn_edit, .btn_delete, .btn_cancel {
+.formContainer .btn, .btn_edit, .btn_delete, .btn_cancel, .btn_export {
   padding: 10px;
   margin: 5px;
   border: 1px solid black;
@@ -238,6 +238,10 @@ img {
 
 .formContainer .btn_cancel {
   background-color: #cc0000;
+}
+
+.formContainer .btn_export {
+  background-color: #00cccc;
 }
 
 .formContainer .btn:hover,
@@ -263,7 +267,7 @@ img {
   margin: 5px 10px 5px 5px;
 }
 
-.b_status {
+.b_status, .a_status {
   margin: 5px 5px 5px 10px;
 }
 

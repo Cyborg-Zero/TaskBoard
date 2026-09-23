@@ -1,38 +1,38 @@
 // Pop-up öffnen und Ticket laden
 window.openbForm = function(tid) {
-    console.log("Aufruf von ticket_laden.php mit ID:", tid);
+    console.log("Aufruf von a_ticket_laden.php mit ID:", tid);
     //
-    fetch("ticket_laden.php?id=" + tid)
+    fetch("a_ticket_laden.php?id=" + tid)
         .then(res => res.json())
         .then(ticket => {
             // Pop-up zuerst sichtbar machen
-            const popup = document.getElementById("b_popup");
+            const popup = document.getElementById("a_popup");
             popup.style.display = "block";
             //Zum Debuggen
             console.log("Ticket geladen:", ticket); // Debug
-            console.log("Titel-Feld:", document.getElementById("b_titel"));
-            console.log("Beschreibung-Feld:", document.getElementById("b_desc"));
-            console.log("Priorität-Feld:", document.getElementById("b_prio"));
-            console.log("Status-Feld:", document.getElementById("b_status"));
+            console.log("Titel-Feld:", document.getElementById("a_titel"));
+            console.log("Beschreibung-Feld:", document.getElementById("a_desc"));
+            console.log("Priorität-Feld:", document.getElementById("a_prio"));
+            console.log("Status-Feld:", document.getElementById("a_status"));
             //Titel des Tickets
-            const titelInput = document.getElementById("b_titel");
+            const titelInput = document.getElementById("a_titel");
             if (titelInput) titelInput.value = ticket.titel || "";
             // Textarea Beschreibung
-            const descInput = document.getElementById("b_desc");
+            const descInput = document.getElementById("a_desc");
             if (descInput) descInput.value = ticket.beschreibung || "";
             // Hidden Feld Ticket-ID
             const ticketIdInput = document.getElementById("ticket_id");
             if (ticketIdInput) ticketIdInput.value = ticket.tid || "";
             // Hidden Feld Datum
-            const datumInput = document.getElementById("b_datum");
+            const datumInput = document.getElementById("a_datum");
             if (datumInput) datumInput.value = ticket.datum || "";
             // Select Priorität
-            const prioSelect = document.getElementById("b_prio");
+            const prioSelect = document.getElementById("a_prio");
             if (prioSelect) {
                 let found = false;
                 for (let i = 0; i < prioSelect.options.length; i++) {
-                    console.log("Option Value:", prioSelect.options[i].value, "Ticket Priorität:", ticket.priorität); // Debug
-                    if (prioSelect.options[i].value === ticket.priorität) {
+                    console.log("Option Value:", prioSelect.options[i].value, "Ticket Priorität:", ticket.prioritaet); // Debug
+                    if (prioSelect.options[i].value === ticket.prioritaet) {
                         prioSelect.selectedIndex = i;
                         found = true;
                         break;
@@ -40,7 +40,7 @@ window.openbForm = function(tid) {
                 }
                 if (!found) prioSelect.selectedIndex = 0; // Standard auswählen, falls nicht gefunden
             };
-            const statusSelect = document.getElementById("b_status");
+            const statusSelect = document.getElementById("a_status");
             if (statusSelect) {
                 // 1. Hole den Rohwert aus dem JSON
                 const ticketStatusRaw = ticket.status; 
@@ -80,7 +80,7 @@ window.openbForm = function(tid) {
 }
 // Klick-Listener für Bearbeiten-Buttons
 document.addEventListener("click", function (e) {
-    const btn = e.target.closest(".bearbeiten");
+    const btn = e.target.closest(".nachlesen");
     if (!btn) return;
 
     const tid = btn.dataset.tid;
@@ -90,6 +90,6 @@ document.addEventListener("click", function (e) {
 });
 // Pop-up schließen
 window.closebForm = function() {
-    const popup = document.getElementById("b_popup");
+    const popup = document.getElementById("a_popup");
     if (popup) popup.style.display = "none";
 }

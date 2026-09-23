@@ -12,8 +12,8 @@
         //
         try {
             // Insert into archiv
-            $insert = "INSERT INTO archiv (tid, titel, beschreibung, priorität, datum, archiviert)
-                    SELECT tid, titel, beschreibung, priorität, datum, NOW()
+            $insert = "INSERT INTO archiv (tid, titel, beschreibung, priorität, status, datum, archiviert)
+                    SELECT tid, titel, beschreibung, priorität, status, datum, NOW()
                     FROM ticket WHERE tid = ?";
             $stmt_insert = mysqli_prepare($db, $insert);
             mysqli_stmt_bind_param($stmt_insert, "i", $tid);

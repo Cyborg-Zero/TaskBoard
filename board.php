@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type="module" src="js/main.js"></script>
+        <script type="module" src="js/bearbeiten.js"></script>
     </head>
     <body>
         <header>
@@ -74,11 +75,13 @@
                                 <option value="Abgeschlossen">Abgeschlossen</option>
                             </select>
                         </div>
+                        <input type="hidden" id="b_datum">
                     </div>
                         <div class="buttons">
                             <button type="submit" class="btn_edit" name="bearbeiten">Ticket bearbeiten</button>
                             <button type="button" class="btn_delete" onclick="loescheTicket()">Ticket schließen</button>
                             <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
+                            <button type="button" class="btn_export" onclick="exportTicket()">Exportieren</button>
                         </div>
                     </form>
                 </div>

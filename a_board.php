@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script type="module" src="js/main.js"></script>
+        <script type="module" src="js/nachlesen.js"></script>
     </head>
     <body>
         <header>
@@ -36,29 +37,48 @@
                         <h2>Ticket erstellen</h2>
                         <input id="titel" placeholder="Titel eingeben" name="titel" required>
                         <textarea id="desc" placeholder="Beschreiben Sie was passiert ist?" name="desc" required></textarea>
+                        <div class="prio">    
                             <select id="prio" name="prio" required>
                                 <option value="" selected disabled hidden>Priorität wählen</option>
                                 <option value="Hoch">Hoch</option>
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
-                        <button type="button" class="btn_cancel" onclick="closeForm()">Close</button>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" class="btn" name="erstellen">Ticket erstellen</button>
+                            <button type="button" class="btn_cancel" onclick="closeForm()">Abbrechen</button>
+                        </div>
                     </form>
                 </div>
-                <div class="b_formPopup" id="b_popup">
+                <div class="a_formPopup" id="a_popup">
                     <form action="nachlesen.php" method="post" class="formContainer">
-                        <h2>Ticket bearbeiten</h2>
+                        <h2>Ticket anschauen</h2>
                             <input type="hidden" id="ticket_id" name="tid">
-                            <input id="b_titel" name="titel" required>
-                            <textarea id="b_desc" name="desc" required></textarea>
-                            <select id="b_prio" name="prio" required>
-                                <option value="" selected disabled hidden>Priorität wählen</option>
+                            <input id="a_titel" name="titel" required>
+                            <textarea id="a_desc" name="desc" required></textarea>
+                    <div class="auswahl">
+                        <div class="prio">
+                            <label for="a_prio">Priorität:</label>
+                            <select id="a_prio" name="prio" required>
                                 <option value="Hoch">Hoch</option>
                                 <option value="Mittel">Mittel</option>
                                 <option value="Niedrig">Niedrig</option>
                             </select>
-                        <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
+                        </div>
+                        <div class="a_status">
+                            <label for="a_status">Status:</label>
+                            <select id="a_status" name="status" required>
+                                <option value="Offen">Offen</option>
+                                <option value="In Bearbeitung">In Bearbeitung</option>
+                                <option value="Abgeschlossen">Abgeschlossen</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="buttons">
+                            <button type="button" class="btn_cancel" onclick="closebForm()">Abbrechen</button>
+                            <button type="button" class="btn_export" onclick="">Exportieren</button>
+                        </div>
                     </form>
                 </div>
             </div>
