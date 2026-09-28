@@ -8,9 +8,7 @@ window.openbForm = function(tid) {
             // --- NEU: Rohdaten für den JSON-Export zwischenspeichern ---
             // Enthält u.a. 'datum' und 'archiviert' aus der DB
             window._archivTicketRohdaten = ticket;
-            // ------------------------------------------------------------
-
-            // Pop-up zuerst sichtbar machen
+            // Pop-up sichtbar machen
             const popup = document.getElementById("a_popup");
             popup.style.display = "block";
             //Zum Debuggen
